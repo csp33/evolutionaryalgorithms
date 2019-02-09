@@ -1,0 +1,127 @@
+\documentclass[12pt,english]{article}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{subcaption}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{amsthm}
+\usepackage{multicol}
+\usepackage[outputdir=build]{minted}
+\usepackage{float}
+\usepackage{titling}
+\usepackage{soul}
+\usepackage{listings}
+\usepackage{array}
+\graphicspath{ {../img/}}
+\selectlanguage{english}
+\usepackage[nottoc]{tocbibind}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[a4paper,left=2cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}
+
+
+\title{Evolutionary Algorithms}
+\setlength{\droptitle}{10em}
+\author{Carlos Sánchez Páez}
+
+\makeindex
+\begin{document}
+
+
+\begin{titlepage}
+
+\newlength{\centeroffset}
+\setlength{\centeroffset}{-0.5\oddsidemargin}
+\addtolength{\centeroffset}{0.5\evensidemargin}
+\thispagestyle{empty}
+
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+
+\centering
+\includegraphics[width=0.75\textwidth]{bme_logo.jpg}\\[1.4cm]
+
+\textsc{ \Large Evolutionary Algorithms\\[4cm]}
+
+-\textsc{\Huge Homework}\\[0.75cm]
+
+{\Large\bfseries First task\\}
+\end{minipage}
+
+\vspace{8cm}
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+\centering
+
+\textbf{Author}\\ {Carlos Sánchez Páez}\\
+\texttt{http://www.github.com/csp98}\\[0.5cm]
+\textsc{Budapest University of Technology and Economics}\\
+\vspace{1cm}
+\textsc{Academic year 2018-2019}
+\end{minipage}
+\end{titlepage}
+\thispagestyle{empty}
+
+\newpage
+
+
+\begin{enumerate}
+	\item Let us suppose, that the run-time of an algorithm is monotone increasing in n, which is the length of the input. Investigate the following statements:
+	\begin{enumerate}
+		\item If we plot the run-time on log-log scale than we obtain a monoton increasing function.
+		\item If the run-time is not only monotone increasing, but also convex, then the plot on log-log scale will be convex.
+	\end{enumerate}
+	Prove the true statement(s) and give counterexample(s) to the false one(s).
+	\item Let us suppose, that two possible solution are coded with 0101010 and 0001000. If they are the parents can any of their offspring be:
+	\begin{itemize}
+		\item 0101010
+		\item 1111111
+		\item 0000000
+	\end{itemize}
+in case we use:
+\begin{itemize}
+	\item onepoint-crossover ?
+	\item multiplepoints-crossover ?
+	\item uniform-crossover ?
+\end{itemize}
+
+\begin{figure}[H]
+\centering
+	\begin{tabular}{|m{3cm}|m{4cm}|m{4cm}|m{4cm}|}
+	\hline
+		\textbf{Offspring} & \textbf{Onepoint-crossover} & \textbf{Multiplepoints-crossover} & \textbf{Uniform-crossover}\\
+		\hline
+		 0101010 & Yes, if we put the breakpoint in the first position (0\textbf{101010} + \textbf{0}001000)& & \\
+		 \hline
+		 1111111 & & & \\
+		 \hline
+		 0000000 & & & \\
+		 \hline
+	\end{tabular}
+\end{figure}
+
+\item How can we represent with a fixed length 0-1 series the solutions of the following problem?
+
+We have an n × n sized grid, and on each edge a real positive number.
+We are looking for a path from the upper left corner point to the lower
+right point, which goes only to the right or down, where the sum of the numbers along the path is minimal. Write a program (using your favorite programming language) to solve this problem using a suitable genetic algorithm.
+
+
+\end{enumerate}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{Course Webpage}
+Course Webpage
+\\\texttt{http://math.bme.hu/~safaro/evolalgen.html}
+
+\end{thebibliography}
+
+
+
+\end{document}
