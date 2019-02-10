@@ -9,7 +9,7 @@
 \usepackage{caption}
 \usepackage{amsthm}
 \usepackage{multicol}
-\usepackage[outputdir=build]{minted}
+\usepackage{minted}
 \usepackage{float}
 \usepackage{titling}
 \usepackage{soul}
@@ -110,6 +110,14 @@ We have an n × n sized grid, and on each edge a real positive number.
 We are looking for a path from the upper left corner point to the lower
 right point, which goes only to the right or down, where the sum of the numbers along the path is minimal. Write a program (using your favorite programming language) to solve this problem using a suitable genetic algorithm.
 
+The representation of the problem will be the following:
+\begin{itemize}
+	\item \textbf{0} = Move right
+	\item \textbf{1} = Move down
+\end{itemize}
+Each individual will have a genotype (size n + 2) which indicates the steps that have to be completed to reach the destination. The fitness funcion is the sum of the costs of the points crossed during the path (it has to be minimized).\\
+
+In my algorithm I use the onepoint-crossover technique for the reproduction. The population size is 10 and the mutation chance, 20\%.
 
 \end{enumerate}
 
@@ -119,6 +127,22 @@ right point, which goes only to the right or down, where the sum of the numbers 
 \bibitem{Course Webpage}
 Course Webpage
 \\\texttt{http://math.bme.hu/~safaro/evolalgen.html}
+
+\bibitem{Webpage}
+\texttt{http://www.rubicite.com/Tutorials/GeneticAlgorithms.aspx}
+
+\bibitem{Webpage2}
+\texttt{https://towardsdatascience.com/genetic-algorithm-implementation-in-python-5ab67bb124a6}
+
+\bibitem{Webpage3}
+\texttt{https://docs.python.org/3/}
+
+
+\bibitem{Webpage4}
+\texttt{https://tex.stackexchange.com/}
+
+
+
 
 \end{thebibliography}
 

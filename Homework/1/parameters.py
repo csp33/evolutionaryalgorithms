@@ -8,7 +8,7 @@ genotype_size = N + 2
 population_size = 10
 parents_size = 3
 mutation_chance = 0.2
-generations = 4
+generations = 10
 
 grid = [[0 if x == y == 0 or x == y == N - 1 else randint(1, 10)
          for x in range(N)] for y in range(N)]
