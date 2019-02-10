@@ -95,11 +95,11 @@ in case we use:
 	\hline
 		\textbf{Offspring} & \textbf{Onepoint-crossover} & \textbf{Multiplepoints-crossover} & \textbf{Uniform-crossover}\\
 		\hline
-		 0101010 & Yes, if we put the breakpoint in the first position (0\textbf{101010} + \textbf{0}001000)& & \\
+		 0101010 & Yes, if we put the breakpoint in the first position (0\textbf{101010} + \textbf{0}001000)& Yes. If we put the breakpoints in the first and last position (0\textbf{10101}0 + \textbf{0}00100\textbf{0}) & Yes, if the probability chooses the right parent in the right moment. Example: 0\textbf{1}0\textbf{1}0\textbf{1}0 + \textbf{0}0\textbf{0}1\textbf{0}0\textbf{0} \\
 		 \hline
-		 1111111 & & & \\
+		 1111111 & No. In many positions there are not ones in the parents.& No. In many positions there are not ones in the parents.& No. In many positions there are not ones in the parents.\\
 		 \hline
-		 0000000 & & & \\
+		 0000000 & No. In some positions there are not zeros in the parents. & No, because in the $4^{th}$ position both parents have a one.& No, because in the $4^{th}$ position both parents have a one.\\
 		 \hline
 	\end{tabular}
 \end{figure}
