@@ -55,8 +55,7 @@ def selection_and_reproduction(population):
 
     # Select the ones with the lowest fitness
     selected = fitnesses[0:parents_size]
-
-    for i in range(len(population) - parents_size):
+    for i in range(parents_size,len(population) - parents_size):
         breakpoint = randint(1, genotype_size - 1)  # Choose the breakpoint
         parents = sample(selected, 2)  # Select two parents
 
@@ -67,7 +66,6 @@ def selection_and_reproduction(population):
         # If the individual is not suitable, we skip it.
         if is_suitable(new_individual):
             population[i] = new_individual
-            print("suitable {}".format(new_individual))
     return population
 
 
@@ -79,7 +77,6 @@ def mutation(population):
             new_individual[point] = RIGHT if new_individual[point] == DOWN else DOWN
             if is_suitable(new_individual):
                 population[i] = new_individual
-                print("generated {}".format(new_individual))
     return population
 
 

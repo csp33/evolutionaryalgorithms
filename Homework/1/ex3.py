@@ -9,7 +9,7 @@ print('\n'.join([''.join(['{:4}'.format(item) for item in row])
 
 population = get_population()
 
-print("First population: {}\n".format(population))
+print("First population:\n{}\n".format(population))
 
 for i in range(generations):
     population = selection_and_reproduction(population)
@@ -24,10 +24,11 @@ if best_fitness == NOT_SUITABLE:
 else:
     print("Best solution: {} -> {} -> fitness = {}".format(best_individual,
                                                            get_phenotype(best_individual), best_fitness))
-
+"""
     print("Final population (phenotype):")
     for i in population:
         print(get_phenotype(i))
     print("Fitnesses:")
     for i in population:
         print("{} ->{}".format(i, get_fitness(i)))
+"""
