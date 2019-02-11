@@ -20,9 +20,9 @@ def get_individual():
     individual = [randint(RIGHT, DOWN)
                   for i in range(genotype_size)]
     # If it is not suitable, we generate a new one.
-    if not is_suitable(individual):
-        individual = get_individual()
-
+    while not is_suitable(individual):
+        individual = [randint(RIGHT, DOWN)
+                  for i in range(genotype_size)]
     return individual
 
 
@@ -37,9 +37,9 @@ def get_fitness(individual):
     fitness = 0
     for i in individual:
         if i == RIGHT:
-            x += 1
-        else:
             y += 1
+        else:
+            x += 1
         if x >= N or y >= N:
             # As we try to minimize the fitness, this high value will discard the individual from future generations.
             return NOT_SUITABLE

@@ -115,7 +115,7 @@ The representation of the problem will be the following:
 	\item \textbf{0} = Move right
 	\item \textbf{1} = Move down
 \end{itemize}
-Each individual will have a genotype (size n + 2) which indicates the steps that have to be completed to reach the destination. The fitness funcion is the sum of the costs of the points crossed during the path (it has to be minimized).\\
+Each individual will have a genotype (size $2n - 2$ because to get to the lower right corner you must go $n-1$ positions down plus $n-1$ positions to the right, so $2\cdot(n-1)=2n-2$) which indicates the steps that have to be completed to reach the destination. The fitness funcion is the sum of the costs of the points crossed during the path (it has to be minimized).\\
 
 In my algorithm I use the onepoint-crossover technique for the reproduction. The population size is 10 and the mutation chance, 20\%.
 
