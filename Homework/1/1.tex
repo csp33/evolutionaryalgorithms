@@ -3,12 +3,14 @@
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{multirow}
+\usepackage{pgfplots}
 \usepackage{subcaption}
 \usepackage{amssymb}
 \usepackage[hidelinks]{hyperref}
 \usepackage{caption}
 \usepackage{amsthm}
 \usepackage{multicol}
+\pgfplotsset{compat=1.16}
 \usepackage{minted}
 \usepackage{float}
 \usepackage{titling}
@@ -47,7 +49,7 @@
 
 \textsc{ \Large Evolutionary Algorithms\\[4cm]}
 
--\textsc{\Huge Homework}\\[0.75cm]
+\textsc{\Huge Homework}\\[0.75cm]
 
 {\Large\bfseries First task\\}
 \end{minipage}
@@ -70,54 +72,116 @@
 
 
 \begin{enumerate}
-	\item Let us suppose, that the run-time of an algorithm is monotone increasing in n, which is the length of the input. Investigate the following statements:
+	\item Let us suppose, that the run-time of an algorithm is monotone increasing in n, which is the length of the input. Investigate the following statements. Prove the true statement(s) and give counterexample(s) to the false one(s):
 	\begin{enumerate}
-		\item If we plot the run-time on log-log scale than we obtain a monoton increasing function.
-		\item If the run-time is not only monotone increasing, but also convex, then the plot on log-log scale will be convex.
+		\item If we plot the run-time on log-log scale than we obtain a monoton increasing function.\\
+
+		The run-time of the algorithm is given by the function $f(n)$. As $f(n)$ is monotone increasing, $f'(n)>0$ for every $n \in \mathbb{N}$.
+		\begin{gather*}
+			T(n) = f(n)\\
+			log(T(n)) = log(f(n))\\
+			\frac{1}{T(n)} \cdot T'(n) = \frac{1}{f(n)} \cdot f'(n) \quad\text{(by derivating)}\\
+			T'(n) = \frac{1}{f(n)} \cdot T(n) \cdot f'(n)\\
+		\end{gather*}
+		We can se how $T'(n)>0$ for every $n \in \mathbb{N}$ (all the members in the product are). This property defines a monotone increasing function, so we can conclude that the statement is \textbf{true}.
+
+		\item If the run-time is not only monotone increasing, but also convex, then the plot on log-log scale will be convex.\\
+
+		Now we have another condition: the function is convex. That means $f''(n)>0$ for every $n \in \mathbb{N}$. We will proceed in the same way but derivating twice:
+		\begin{gather*}
+			T(n) = f(n)\\
+			log(T(n)) = log(f(n))\\
+			\frac{1}{T(n)} \cdot T'(n) = \frac{1}{f(n)} \cdot f'(n) \quad\text{(by derivating)}\\
+			T'(n) = \frac{1}{f(n)} \cdot T(n) \cdot f'(n)\\
+			T''(n) = \frac{f(n) \cdot [T'(n) \cdot f'(n) + f''(n) \cdot T(n)] - f'(n) \cdot T(n) \cdot f'(n)}{f^2(n)} \quad\text{(by derivating again)}\\
+		\end{gather*}
+
+		We can see that we have a negative part in the numerator ($[f'(n)]^2 \cdot T(n)$), so the logscale plot won't be always convex. That means the statement is \textbf{false}. We can see a counterexample:
+			\begin{figure}[H]
+				\begin{tikzpicture}[scale=0.85]
+					\begin{axis}[
+					    axis lines = left,
+					    xlabel = $n$,
+					    ylabel = {$f(n)$},
+					]
+					%Below the red parabola is defined
+					\addplot [
+					    domain=-10:10,
+					    samples=100,
+					    color=red,
+					]
+					{x^2};
+					\addlegendentry{$n^2$}
+					\end{axis}
+				\end{tikzpicture}
+				\quad
+				\begin{tikzpicture}[scale=0.85]
+					\begin{axis}[
+							axis lines = left,
+							xmode = log,
+							ymode = log,
+							xlabel = $n$ $(logscale)$,
+							ylabel = {$f(n)$ $(logscale)$},
+					]
+					%Below the red parabola is defined
+					\addplot [
+							samples=100,
+							color=red,
+					]
+					{x^2};
+					\addlegendentry{$n^2$}
+					\end{axis}
+			\end{tikzpicture}
+		\end{figure}
+
 	\end{enumerate}
-	Prove the true statement(s) and give counterexample(s) to the false one(s).
+
+	As we can see, $n^2$ is convex but its logscale plot isn't.
+
 	\item Let us suppose, that two possible solution are coded with 0101010 and 0001000. If they are the parents can any of their offspring be:
 	\begin{itemize}
 		\item 0101010
 		\item 1111111
 		\item 0000000
 	\end{itemize}
-in case we use:
-\begin{itemize}
-	\item onepoint-crossover ?
-	\item multiplepoints-crossover ?
-	\item uniform-crossover ?
-\end{itemize}
+	in case we use:
+	\begin{itemize}
+		\item onepoint-crossover ?
+		\item multiplepoints-crossover ?
+		\item uniform-crossover ?
+	\end{itemize}
 
-\begin{figure}[H]
-\centering
-	\begin{tabular}{|m{3cm}|m{4cm}|m{4cm}|m{4cm}|}
-	\hline
-		\textbf{Offspring} & \textbf{Onepoint-crossover} & \textbf{Multiplepoints-crossover} & \textbf{Uniform-crossover}\\
+	\begin{figure}[H]
+	\centering
+		\begin{tabular}{|m{3cm}|m{4cm}|m{4cm}|m{4cm}|}
 		\hline
-		 0101010 & Yes, if we put the breakpoint in the first position (0\textbf{101010} + \textbf{0}001000)& Yes. If we put the breakpoints in the first and last position (0\textbf{10101}0 + \textbf{0}00100\textbf{0}) & Yes, if the probability chooses the right parent in the right moment. Example: 0\textbf{1}0\textbf{1}0\textbf{1}0 + \textbf{0}0\textbf{0}1\textbf{0}0\textbf{0} \\
-		 \hline
-		 1111111 & No. In many positions there are not ones in the parents.& No. In many positions there are not ones in the parents.& No. In many positions there are not ones in the parents.\\
-		 \hline
-		 0000000 & No. In some positions there are not zeros in the parents. & No, because in the $4^{th}$ position both parents have a one.& No, because in the $4^{th}$ position both parents have a one.\\
-		 \hline
-	\end{tabular}
-\end{figure}
+			\textbf{Offspring} & \textbf{Onepoint-crossover} & \textbf{Multiplepoints-crossover} & \textbf{Uniform-crossover}\\
+			\hline
+			 0101010 & Yes, if we put the breakpoint in the first position (0\textbf{101010} + \textbf{0}001000)& Yes. If we put the breakpoints in the first and last position (0\textbf{10101}0 + \textbf{0}00100\textbf{0}) & Yes, if the probability chooses the right parent in the right moment. Example: 0\textbf{1}0\textbf{1}0\textbf{1}0 + \textbf{0}0\textbf{0}1\textbf{0}0\textbf{0} \\
+			 \hline
+			 1111111 & No. In many positions there are not ones in the parents.& No. In many positions there are not ones in the parents.& No. In many positions there are not ones in the parents.\\
+			 \hline
+			 0000000 & No. In some positions there are not zeros in the parents. & No, because in the $4^{th}$ position both parents have a one.& No, because in the $4^{th}$ position both parents have a one.\\
+			 \hline
+		\end{tabular}
+	\end{figure}
 
-\item How can we represent with a fixed length 0-1 series the solutions of the following problem?
+\newpage
 
-We have an n × n sized grid, and on each edge a real positive number.
-We are looking for a path from the upper left corner point to the lower
-right point, which goes only to the right or down, where the sum of the numbers along the path is minimal. Write a program (using your favorite programming language) to solve this problem using a suitable genetic algorithm.
+	\item How can we represent with a fixed length 0-1 series the solutions of the following problem?
 
-The representation of the problem will be the following:
-\begin{itemize}
-	\item \textbf{0} = Move right
-	\item \textbf{1} = Move down
-\end{itemize}
-Each individual will have a genotype (size $2n - 2$ because to get to the lower right corner you must go $n-1$ positions down plus $n-1$ positions to the right, so $2\cdot(n-1)=2n-2$) which indicates the steps that have to be completed to reach the destination. The fitness funcion is the sum of the costs of the points crossed during the path (it has to be minimized).\\
+	We have an n × n sized grid, and on each edge a real positive number.
+	We are looking for a path from the upper left corner point to the lower
+	right point, which goes only to the right or down, where the sum of the numbers along the path is minimal. Write a program (using your favorite programming language) to solve this problem using a suitable genetic algorithm.
 
-In my algorithm I use the onepoint-crossover technique for the reproduction. The population size is 10 and the mutation chance, 20\%.
+	The representation of the problem will be the following:
+	\begin{itemize}
+		\item \textbf{0} = Move right
+		\item \textbf{1} = Move down
+	\end{itemize}
+	Each individual will have a genotype (size $2n - 2$ because to get to the lower right corner you must go $n-1$ positions down plus $n-1$ positions to the right, so $2\cdot(n-1)=2n-2$) which indicates the steps that have to be completed to reach the destination. The fitness funcion is the sum of the costs of the points crossed during the path (it has to be minimized).\\
+
+	In my algorithm I use the onepoint-crossover technique for the reproduction. The population size is 10 and the mutation chance, 20\%.
 
 \end{enumerate}
 
@@ -141,11 +205,7 @@ Course Webpage
 \bibitem{Webpage4}
 \texttt{https://tex.stackexchange.com/}
 
-
-
-
 \end{thebibliography}
-
 
 
 \end{document}
