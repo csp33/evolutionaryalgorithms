@@ -8,9 +8,9 @@ def is_suitable(individual):
     x, y = 0, 0
     for i in individual:
         if i == RIGHT:
-            x += 1
-        else:
             y += 1
+        else:
+            x += 1
         if x >= N or y >= N:
             return False
     return True
@@ -46,15 +46,18 @@ def get_fitness(individual):
         fitness += grid[x][y]
     return fitness
 
+def sort_population(population):
+    fitnesses = [(get_fitness(i), i) for i in population]
+    fitnesses = [i[1] for i in sorted(fitnesses)]
+    return fitnesses
+
 
 def selection_and_reproduction(population):
-    fitnesses = [(get_fitness(i), i) for i in population]
     # Sort the individuals according to their fitness
-    fitnesses = [i[1] for i in sorted(fitnesses)]
-    population = fitnesses
+    population = sort_population(population)
 
     # Select the ones with the lowest fitness
-    selected = fitnesses[0:parents_size]
+    selected = population[0:parents_size]
     for i in range(parents_size,len(population) - parents_size):
         breakpoint = randint(1, genotype_size - 1)  # Choose the breakpoint
         parents = sample(selected, 2)  # Select two parents

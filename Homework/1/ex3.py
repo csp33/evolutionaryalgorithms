@@ -15,6 +15,7 @@ for i in range(generations):
     population = selection_and_reproduction(population)
     population = mutation(population)
 
+population=sort_population(population)
 best_individual = population[0]
 best_fitness = get_fitness(best_individual)
 
