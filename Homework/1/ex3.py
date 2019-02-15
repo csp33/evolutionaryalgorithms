@@ -25,11 +25,11 @@ if best_fitness == NOT_SUITABLE:
 else:
     print("Best solution: {} -> {} -> fitness = {}".format(best_individual,
                                                            get_phenotype(best_individual), best_fitness))
-"""
+    """
     print("Final population (phenotype):")
     for i in population:
         print(get_phenotype(i))
+    """
     print("Fitnesses:")
     for i in population:
         print("{} ->{}".format(i, get_fitness(i)))
-"""

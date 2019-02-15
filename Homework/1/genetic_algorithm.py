@@ -3,6 +3,8 @@ from parameters import *
 
 
 def is_suitable(individual):
+    # The individual must have (n-1) ones and (n-1) zeros
+    """
     if sum(individual) == 0 or sum(individual) >= N:
         return False
     x, y = 0, 0
@@ -14,6 +16,8 @@ def is_suitable(individual):
         if x >= N or y >= N:
             return False
     return True
+    """
+    return sum(individual) == N-1
 
 
 def get_individual():
@@ -73,11 +77,15 @@ def selection_and_reproduction(population):
 
 
 def mutation(population):
+    # Mutation should swap (if I just change one chromosome, the individual will never be suitable)
     for i in range(len(population) - parents_size):
         if random() <= mutation_chance:
             point = randint(0, genotype_size - 1)
+            second_point = randint(0, genotype_size - 1)
+            while(point == second_point):
+                second_point = randint(0, genotype_size - 1)
             new_individual = population[i]
-            new_individual[point] = RIGHT if new_individual[point] == DOWN else DOWN
+            new_individual[point], new_individual[second_point] = new_individual[second_point], new_individual[point]
             if is_suitable(new_individual):
                 population[i] = new_individual
     return population
