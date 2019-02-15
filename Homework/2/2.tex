@@ -1,0 +1,100 @@
+\documentclass[12pt,english]{article}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{amsthm}
+\usepackage{multicol}
+\pgfplotsset{compat=1.16}
+\usepackage{minted}
+\usepackage{float}
+\usepackage{titling}
+\usepackage{soul}
+\usepackage{listings}
+\usepackage{array}
+\graphicspath{ {../img/}}
+\selectlanguage{english}
+\usepackage[nottoc]{tocbibind}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[a4paper,left=2cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}
+
+
+\title{Evolutionary Algorithms}
+\setlength{\droptitle}{10em}
+\author{Carlos Sánchez Páez}
+
+\makeindex
+\begin{document}
+
+
+\begin{titlepage}
+
+\newlength{\centeroffset}
+\setlength{\centeroffset}{-0.5\oddsidemargin}
+\addtolength{\centeroffset}{0.5\evensidemargin}
+\thispagestyle{empty}
+
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+
+\centering
+\includegraphics[width=0.75\textwidth]{bme_logo.jpg}\\[1.4cm]
+
+\textsc{ \Large Evolutionary Algorithms\\[4cm]}
+
+\textsc{\Huge Homework}\\[0.75cm]
+
+{\Large\bfseries Second task\\}
+\end{minipage}
+
+\vspace{8cm}
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+\centering
+
+\textbf{Author}\\ {Carlos Sánchez Páez}\\
+\texttt{http://www.github.com/csp98}\\[0.5cm]
+\textsc{Budapest University of Technology and Economics}\\
+\vspace{1cm}
+\textsc{Academic year 2018-2019}
+\end{minipage}
+\end{titlepage}
+\thispagestyle{empty}
+
+\newpage
+
+
+\begin{enumerate}
+	\item Let us suppose, that an algorithm’s running time is polynomial, that is $cn^\alpha$ for some $\alpha$, $c \in \mathbb{R}$ constants. Give an estimate for
+$c$ and $\alpha$ if for input lengths n = [4, 5, 6, 7, 8, 9, 10] we measured the following running times [37.1 58.7 84.0 115.1 150.8 190.9 235.2].
+	\item Let us suppose, that we have a population containing 4 individuals called e1, e2, e3, e4. Their fitness’s are 0.4, 0.7, 0.3, 0.05. We use a roulette-wheel selection to select the four parents.
+	\begin{itemize}
+		\item What is the probability, that e2 won’t be chosen as parent at all?
+		\item What is the probability, that e3 will be chosen two times?
+	\end{itemize}
+	\item What can be a good measure of performance for a genetic algorithm? Justify your answer! Using your measure find the optimal probability of the mutation for the backpacking problem, using elitism, a tournament selection with k = 4, a fitness function described in the first lecture (sum of the values if the sum of the weights is below or equal to the capacity, 0 otherwise). Is there a significant difference in the efficiency between the optimal parameter and setting the probability of mutation to 0?
+
+\end{enumerate}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{Course Webpage}
+Course Webpage
+\\\texttt{http://math.bme.hu/~safaro/evolalgen.html}
+
+
+\bibitem{Webpage4}
+\texttt{https://tex.stackexchange.com/}
+
+\end{thebibliography}
+
+
+\end{document}
