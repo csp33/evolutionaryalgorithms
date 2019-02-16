@@ -16,6 +16,7 @@
 \usepackage{titling}
 \usepackage{soul}
 \usepackage{listings}
+\newenvironment{statement}{\fontfamily{ptm}\selectfont}{\par}
 \usepackage{array}
 \graphicspath{ {../img/}}
 \selectlanguage{english}
@@ -72,14 +73,114 @@
 
 
 \begin{enumerate}
-	\item Let us suppose, that an algorithm’s running time is polynomial, that is $cn^\alpha$ for some $\alpha$, $c \in \mathbb{R}$ constants. Give an estimate for
-$c$ and $\alpha$ if for input lengths n = [4, 5, 6, 7, 8, 9, 10] we measured the following running times [37.1 58.7 84.0 115.1 150.8 190.9 235.2].
-	\item Let us suppose, that we have a population containing 4 individuals called e1, e2, e3, e4. Their fitness’s are 0.4, 0.7, 0.3, 0.05. We use a roulette-wheel selection to select the four parents.
+
+	\item
+		\begin{statement}
+			Let us suppose, that an algorithm’s running time is polynomial, that is $cn^\alpha$ for some $\alpha$, $c \in \mathbb{R}$ constants. Give an estimate for
+			$c$ and $\alpha$ if for input lengths n = [4, 5, 6, 7, 8, 9, 10] we measured the following running times [37.1 58.7 84.0 115.1 150.8 190.9 235.2].
+		\end{statement}
+
+		We will solve the exercise with the help of \textsc{gnuplot}. First, we will define the function and then tell the program to fit it to the given values:
+		\begin{figure}[H]
+			\centering
+			\begin{minted}[gobble=4]{gnuplot}
+				f(x) = c * x ** a
+				fit f(x) 'ex1_data.txt' via a,c
+			\end{minted}
+		\end{figure}
+		The final set of parameters obtained is the following:
+		\begin{figure}[H]
+			\centering
+			\begin{tabular}{|c|c|c|}
+				\hline
+				 & $a$ & $c$ \\
+				 \hline
+				 \textbf{Value} & $2.00895$ & $2.3073$ \\
+				 \hline
+				 \textbf{Error} & $0.25\%$ & $1.088\%$ \\
+				 \hline
+			\end{tabular}
+		\end{figure}
+
+		So our function is $f(n) = 2.3073n^{2.00895}$.
+
+	\item
+		\begin{statement}
+			Let us suppose, that we have a population containing 4 individuals called $e_1$, $e_2$, $e_3$, $e_4$. Their fitness’s are $0.4$, $0.7$, $0.3$, $0.05$. We use a roulette-wheel selection to select the four parents. Answer these two questions for $f(e)$ and also for the scaled $\hat{f}(e)=f^2(e)$ fitness function.
+		\end{statement}
+	\begin{figure}[H]
+		\centering
+		\begin{tabular}{|c|c|c|}
+			\hline
+		 	& $f(e_i)$ & $f^{2}(e_i)$ \\
+		 	\hline
+			$e_1$ & $0.4$ & $0.16$ \\
+			\hline
+			$e_2$ & $0.7$ & $0.49$ \\
+			\hline
+			$e_3$ & $0.3$ & $0.09$ \\
+			\hline
+			$e_4$ & $0.05$ & $0.0025$ \\
+			\hline
+			\textbf{Sum} & $1.45$ & $0.7425$ \\
+			\hline
+		\end{tabular}
+	\end{figure}
 	\begin{itemize}
-		\item What is the probability, that e2 won’t be chosen as parent at all?
-		\item What is the probability, that e3 will be chosen two times?
+		\item
+		\begin{statement}
+			What is the probability, that $e_2$ won’t be chosen as parent at all?
+		\end{statement}
+
+			To solve this question we will use the complement rule of probability. If $P(e_2)$ is the probability of electing $e_2$, $P(\overline{e_2}) = 1 - P(e_2)$ is the probabilty of not choosing it at all. We will start calculating $P(e_2)$.
+			\[
+				P(e_2) = \frac{f(e_2)}{\sum_{i=1}^{n}{f(e_i)}} = \frac{0.7}{1.45} = 0.482758621
+			\]
+			\begin{center}
+			$P(\overline{e_2}) = 1 - P(e_2) = 1 - 0.482758621 = 0.517241379 $\\
+			\end{center}
+
+			So the probability is \textbf{51.72\%}.
+
+			For $f^2(e)$ we apply the same procedure:
+
+			\[
+				P^{\prime}(e_2) = \frac{f^{2}(e_2)}{\sum_{i=1}^{n}{f^{2}(e_i)}} = \frac{0.49}{0.7425} = 0.65993266
+			\]
+			\begin{center}
+			$P^{\prime}(\overline{e_2}) = 1 - P^{\prime}(e_2) = 1 - 0.65993266 = 0.34006734 $\\
+			\end{center}
+
+			So the probability is \textbf{34.01\%}.
+
+		\item
+		\begin{statement}
+			What is the probability, that $e_3$ will be chosen two times?
+		\end{statement}
+
+		The probability of the intersection is defined by the following statement:
+		$ P(A \cap B) = P(A) \cdot P(B/A)$.
+		$P(B/A)$ means the probability of $B$ knowing that $A$ happened. In this case, the selection of the parents is made in an \emph{equiprobable} way, so $P(B/A) = P(B)$.
+		\[
+			P(e_3 \cap e_3) = (P(e_3))^2 = (\frac{f(e_3)}{\sum_{i=1}^{n}{f(e_i)}})^2 = (\frac{0.3}{1.45})^2 =
+			0.206896552^2= 0.042806183
+		\]
+		So the probability is \textbf{4.28\%}.
+
+		Now, let's calculate it for $f^2(e)$:
+		\[
+			P^{\prime}(e_3 \cap e_3) = (P^{\prime}(e_3))^2 = (\frac{f^{2}(e_3)}{\sum_{i=1}^{n}{f^{2}(e_i)}})^2 = (\frac{0.09}{0.7425})^2 =
+			0.121212121^2= 0.014692378
+		\]
+		So the probability is \textbf{1.47\%}.
+
 	\end{itemize}
-	\item What can be a good measure of performance for a genetic algorithm? Justify your answer! Using your measure find the optimal probability of the mutation for the backpacking problem, using elitism, a tournament selection with k = 4, a fitness function described in the first lecture (sum of the values if the sum of the weights is below or equal to the capacity, 0 otherwise). Is there a significant difference in the efficiency between the optimal parameter and setting the probability of mutation to 0?
+	\item
+		\begin{statement}		
+			What can be a good measure of performance for a genetic algorithm? Justify your answer! Using your measure find the optimal probability of the mutation for the backpacking problem, using elitism, a tournament selection with k = 4, a fitness function described in the first lecture (sum of the values if the sum of the weights is below or equal to the capacity, 0 otherwise). Is there a significant difference in the efficiency between the optimal parameter and setting the probability of mutation to 0?
+		\end{statement}
+
+	A good measure of performance for a genetic algorithm can be the approximation that it makes to the real optimum solution. The lower the difference is, the best performance the algorithm gives.
 
 \end{enumerate}
 
@@ -93,6 +194,10 @@ Course Webpage
 
 \bibitem{Webpage4}
 \texttt{https://tex.stackexchange.com/}
+
+\bibitem{Webpage5}
+\texttt{https://stattrek.com/probability/probability-rules.aspx}
+
 
 \end{thebibliography}
 
