@@ -1,0 +1,115 @@
+\documentclass[12pt,english]{article}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{amsthm}
+\usepackage{multicol}
+\pgfplotsset{compat=1.16}
+\usepackage{minted}
+\usepackage{float}
+\usepackage{titling}
+\usepackage{soul}
+\usepackage{listings}
+\newenvironment{statement}{\fontfamily{ptm}\selectfont}{\par}
+\usepackage{array}
+\graphicspath{ {../img/}}
+\selectlanguage{english}
+\usepackage[nottoc]{tocbibind}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[a4paper,left=2cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}
+
+
+\title{Evolutionary Algorithms}
+\setlength{\droptitle}{10em}
+\author{Carlos Sánchez Páez}
+
+\makeindex
+\begin{document}
+
+
+\begin{titlepage}
+
+\newlength{\centeroffset}
+\setlength{\centeroffset}{-0.5\oddsidemargin}
+\addtolength{\centeroffset}{0.5\evensidemargin}
+\thispagestyle{empty}
+
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+
+\centering
+\includegraphics[width=0.75\textwidth]{bme_logo.jpg}\\[1.4cm]
+
+\textsc{ \Large Evolutionary Algorithms\\[4cm]}
+
+\textsc{\Huge Homework}\\[0.75cm]
+
+{\Large\bfseries Third task\\}
+\end{minipage}
+
+\vspace{8cm}
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+\centering
+
+\textbf{Author}\\ {Carlos Sánchez Páez}\\
+\texttt{http://www.github.com/csp98}\\[0.5cm]
+\textsc{Budapest University of Technology and Economics}\\
+\vspace{1cm}
+\textsc{Academic year 2018-2019}
+\end{minipage}
+\end{titlepage}
+\thispagestyle{empty}
+
+\newpage
+
+
+\begin{enumerate}
+
+	\item
+		\begin{statement}
+    Let us suppose, that the potential solutions are represented with 4-length 0-1 sequences. Construct a fitness function, for which the global optimum is in 0000, but every scheme has the property, that if we change every 0 to 1 the fitness of the scheme increases. Prove this property for your fitness function.
+		\end{statement}
+
+
+	\item
+		\begin{statement}
+    Consider the following statement: "If the Gray codes of two numbers only differ in one position, then the distance of the two numbers is 1." Prove this statement if it’s true, or give a counterexample if it isn’t.
+		\end{statement}
+
+    The statement is true. Let's prove it:\\
+    Let $n \in \mathbb{N}$ and $n+1$ its consecutive.
+
+
+	\item
+		\begin{statement}
+    Let us investigate the genetic algorithm for the backpacking problem. Your task is to count how many schemes the algorithm evaluates per generation. (You can use your own program or modify the one on the homepage).
+		\end{statement}
+
+
+\end{enumerate}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{Course Webpage}
+Course Webpage
+\\\texttt{http://math.bme.hu/~safaro/evolalgen.html}
+
+
+\bibitem{Webpage4}
+\texttt{https://tex.stackexchange.com/}
+
+
+\end{thebibliography}
+
+
+\end{document}
