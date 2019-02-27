@@ -86,13 +86,26 @@
 		\end{statement}
 
     The statement is true. Let's prove it:\\
-    Let $n \in \mathbb{N}$ and $n+1$ its consecutive.
+    Let $n \in \mathbb{N}$ and $n+1$ its consecutive.\\
+		$n)_{10}=b_1b_2...b_k)_2=b_1(b_1 \oplus b_2)...(b_{k-1} \oplus b_k))_{Gray}$\\
+		$n+1)_{10} = b_1b_2...b_k)_2 + 00...001)_2 $
+
+		If the binary representation of $n$ ends in $1$, $n+1)_2$ will shift $1$ to the left. If it ends in $0$, the unique change will be the last bit ($0 \rightarrowtail 1$).\\
+
+		So, as we need to do the $XOR$ operation between the bits (XOR means that the result will be $1$ only if the bits operated are disctinct) the difference between $n)_{Gray}$ and $n+1)_{Gray}$ will be one bit (the one that has been shifted or not). Let us see an example:
+
+		$11_{10} = 1011)_2 = 1100)_{Gray}$\\
+		$12_{10} = 1100)_2 = 1110)_{Gray}$\\
 
 
 	\item
 		\begin{statement}
     Let us investigate the genetic algorithm for the backpacking problem. Your task is to count how many schemes the algorithm evaluates per generation. (You can use your own program or modify the one on the homepage).
 		\end{statement}
+
+		Holland proved that a genetic algorithm evaluates O($\mu^3$) schemes in one generation, where $\mu$ represents the number of individuals in the population.
+
+		So, the solution for the problem is $30^3 = 27000$
 
 
 \end{enumerate}
