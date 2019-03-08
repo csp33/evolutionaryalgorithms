@@ -78,18 +78,43 @@
 		\begin{statement}
 		Three individuals are coded $e_1 = 00010$, $e_2 = 01001$ and $e_3 = 11001$. How many schemes fits either $e_1$ or $e_2$? How many schemes fit all three?
 		\end{statement}
+		If we focus on $e_1$ and $e_2$, we can see that they differ only in positions 2,4 and 5. So the possible schemes are:
+		\begin{itemize}
+			\item 0\#0\#\#
+			\item 0\#\#\#\#
+			\item \#\#0\#\#
+		\end{itemize}
+		The schemes that fit all of them are:
+		\begin{itemize}
+			\item \#\#0\#\#
+			\item \#\#\#\#\#
+		\end{itemize}
 
 
 	\item
 		\begin{statement}
 		Two individuals are coded $e_1 = 0101$ and $e_2 = 0100$. How many different offsprings can they have if we use one-point crossover? And if we use uniform crossover?
 		\end{statement}
+		As the individuals are equal in all their components (exept the last one), the possible offsprings will be two ($0101$ and $0100$) if we use one-point crossover.\\
+		If we use uniform crossover, the result will be the same, as the first three components are always the same, no matter the parent we choose.
 
 
 	\item
 		\begin{statement}
-		Find that largest codebook you can for the one error correctingc codebook problem (using 8-long bit sequences as words).
+		Find that largest codebook you can for the one error correcting codebook problem (using 8-long bit sequences as words).
 		\end{statement}
+
+		This problem can be easily solved by programming an script. It will
+		calculate the possible binary combinations that can be made with $8$ bits. Then,
+		it will add the items that have a hamming distance of at least $3$ to the codebook.
+		Finally, we just have to calculate the lenght of the generated codebook.\\
+
+		For $8$ bit words, the lenght of the codebook is $16$.
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[scale=0.5]{ex3_output.png}
+		\end{figure}
 
 
 \end{enumerate}
