@@ -1,0 +1,112 @@
+\documentclass[12pt,english]{article}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{amsthm}
+\usepackage{multicol}
+\pgfplotsset{compat=1.16}
+\usepackage{minted}
+\usepackage{float}
+\usepackage{titling}
+\usepackage{soul}
+\usepackage{listings}
+\newenvironment{statement}{\fontfamily{ptm}\selectfont}{\par}
+\usepackage{array}
+\graphicspath{ {../img/}}
+\selectlanguage{english}
+\usepackage[nottoc]{tocbibind}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[a4paper,left=2cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}
+
+
+\title{Evolutionary Algorithms}
+\setlength{\droptitle}{10em}
+\author{Carlos Sánchez Páez}
+
+\makeindex
+\begin{document}
+
+
+\begin{titlepage}
+
+\newlength{\centeroffset}
+\setlength{\centeroffset}{-0.5\oddsidemargin}
+\addtolength{\centeroffset}{0.5\evensidemargin}
+\thispagestyle{empty}
+
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+
+\centering
+\includegraphics[width=0.75\textwidth]{bme_logo.jpg}\\[1.4cm]
+
+\textsc{ \Large Evolutionary Algorithms\\[4cm]}
+
+\textsc{\Huge Homework}\\[0.75cm]
+
+{\Large\bfseries Fifth task\\}
+\end{minipage}
+
+\vspace{8cm}
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+\centering
+
+\textbf{Author}\\ {Carlos Sánchez Páez}\\
+\texttt{http://www.github.com/csp98}\\[0.5cm]
+\textsc{Budapest University of Technology and Economics}\\
+\vspace{1cm}
+\textsc{Academic year 2018-2019}
+\end{minipage}
+\end{titlepage}
+\thispagestyle{empty}
+
+\newpage
+
+
+\begin{enumerate}
+
+	\item
+		\begin{statement}
+		Prove the following statement: \emph{If we can find a Hamiltonian cycle in a digraph in polynomial time, then using this algorithm we can find a Hamiltonian cycle in a graph.}.
+		\end{statement}
+
+
+	\item
+		\begin{statement}
+		Let us suppose, that we use one of the four crossover operator (CX, OX, PMX, EX) for 9-long permutation pairs, the matching segment is the 4-7. positions if there is any. Is it possible, that that the two parents aren’t identical, but the offspring is identical to one of the parents?
+		\end{statement}
+
+	\item
+		\begin{statement}
+		Consider 9-long permutations. Applying CX operator, the permutation pair is divided to cycles. Count the number of cycles for 106 random permutation pairs and make a histogram of the distribution of the number of cycles.
+		\end{statement}
+
+
+
+\end{enumerate}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{Course Webpage}
+Course Webpage
+\\\texttt{http://math.bme.hu/~safaro/evolalgen.html}
+
+
+\bibitem{Webpage4}
+\texttt{https://tex.stackexchange.com/}
+
+
+\end{thebibliography}
+
+
+\end{document}
