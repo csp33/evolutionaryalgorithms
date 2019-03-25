@@ -77,13 +77,23 @@
 	\item
 		\begin{statement}
 		Prove the following statement: \emph{If we can find a Hamiltonian cycle in a digraph in polynomial time, then using this algorithm we can find a Hamiltonian cycle in a graph.}.
+		Is the statement: \emph{If we can find a Hamiltonian cycle in a graph in polynomial time, then using this algorithm we can find a Hamiltonian cycle in a digraph} true?
 		\end{statement}
+
+		Finding a Hamiltonian cycle in a graph is a NP-complete problem. The algorithms known to solve it take, at least, exponential running time. However, if we reduce to a directed graph, the algorithm is easier, as less subpaths have to be checked. This means it could find the cycle in polynomial time. However, if we execute the algorithm in the graph, it can find the solution but with a higher running time.
 
 
 	\item
 		\begin{statement}
-		Let us suppose, that we use one of the four crossover operator (CX, OX, PMX, EX) for 9-long permutation pairs, the matching segment is the 4-7. positions if there is any. Is it possible, that that the two parents aren’t identical, but the offspring is identical to one of the parents?
+		Let us suppose, that we use one of the four crossover operator (CX, OX, PMX, EX) for 9-long permutation pairs, the matching segment is the 4-7 positions if there is any. Is it possible, that that the two parents aren’t identical, but the offspring is identical to one of the parents?
 		\end{statement}
+
+		\begin{itemize}
+			\item \textbf{OX}. Yes, it is possible. For example, let $p_1=123456789$ and $p_2=389456712$. The matching segment is $4567$, so the offspring in the first step would be $---4567--$ and $p_2=389----12$. Then, if we add the alleles to the offspring starting after the ending point of the matching segment we would get $123456789$, which is the first parent.
+			\item \textbf{CX}. It is not possible.
+			\item \textbf{PMX}. It is not possible.
+			\item \textbf{EX}.
+		\end{itemize}
 
 	\item
 		\begin{statement}
