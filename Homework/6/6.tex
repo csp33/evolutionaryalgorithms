@@ -1,0 +1,126 @@
+\documentclass[12pt,english]{article}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{amsthm}
+\usepackage{multicol}
+\pgfplotsset{compat=1.16}
+\usepackage{minted}
+\usepackage{float}
+\usepackage{titling}
+\usepackage{soul}
+\usepackage{listings}
+\newenvironment{statement}{\fontfamily{ptm}\selectfont}{\par}
+\usepackage{array}
+\graphicspath{ {../img/}}
+\selectlanguage{english}
+\usepackage[nottoc]{tocbibind}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[a4paper,left=2cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}
+
+
+\title{Evolutionary Algorithms}
+\setlength{\droptitle}{10em}
+\author{Carlos Sánchez Páez}
+
+\makeindex
+\begin{document}
+
+
+\begin{titlepage}
+
+\newlength{\centeroffset}
+\setlength{\centeroffset}{-0.5\oddsidemargin}
+\addtolength{\centeroffset}{0.5\evensidemargin}
+\thispagestyle{empty}
+
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+
+\centering
+\includegraphics[width=0.75\textwidth]{bme_logo.jpg}\\[1.4cm]
+
+\textsc{ \Large Evolutionary Algorithms\\[4cm]}
+
+\textsc{\Huge Homework}\\[0.75cm]
+
+{\Large\bfseries Sixth task\\}
+\end{minipage}
+
+\vspace{8cm}
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+\centering
+
+\textbf{Author}\\ {Carlos Sánchez Páez}\\
+\texttt{http://www.github.com/csp98}\\[0.5cm]
+\textsc{Budapest University of Technology and Economics}\\
+\vspace{1cm}
+\textsc{Academic year 2018-2019}
+\end{minipage}
+\end{titlepage}
+\thispagestyle{empty}
+
+\newpage
+
+
+\begin{enumerate}
+
+	\item
+		\begin{statement}
+		Calculate the probability, that if we choose two random permutation as parents, then the CX operator produces
+			\begin{itemize}
+				\item 1 cycle
+				\item $n$ cycles, where $n$ is the length of the permutations.
+			\end{itemize}
+		\end{statement}
+
+	\item
+		\begin{statement}
+		Is it possible for any of the four crossover operators (PMX,EX, CX, OX), that if we exchange the order of the two, not identical parents, that the offspring are identical?
+		\end{statement}
+		In the last task we proved that we could get an identical offspring with all these operators. \\
+		As \textbf{EX} is the only operator which does not care about the order of the parents, is the only one which can give an identical offspring if we change the parents order.
+
+	\item
+		\begin{statement}
+		For the EX operator why did we choose the vertex with the shortest edge-list to be the next vertex? Is it true, that if both parents have a common edge in their edge-list, then the offspring always has it in its edge list?
+		\end{statement}
+
+		We choose that vertex to finish with it as soon as possible, so that we do not leave open paths. \\
+		The second statement is true. If both parents have it, it will be chosen in the offspring. We can see it in this part of the algorithm:
+		\emph{If there is a common edge in the current vertex’s edge list, then that vertex will be in the next current vertex}
+	\item
+		\begin{statement}
+		Write a program to solve the Traveling Salesman problem using a genetic algorithm. Use permutation representation, EX crossover and inversion mutation. The test-problem should be the one you designed on the last lecture.
+		\end{statement}
+		In my problem I have omitted where we have to check if there are common edges in the lists because in TSP the graph is complete (all edges are connected to each other).
+
+
+
+\end{enumerate}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{Course Webpage}
+Course Webpage
+\\\texttt{http://math.bme.hu/~safaro/evolalgen.html}
+
+
+\bibitem{Webpage4}
+\texttt{https://tex.stackexchange.com/}
+
+
+\end{thebibliography}
+
+
+\end{document}
