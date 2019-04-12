@@ -40,12 +40,13 @@ class TSP:
             self.population[position] = self.inversion_mutation(
                 self.population[position])
 
-    def create_neighbours_lists(self):
+    def create_neighbours_lists(self, a, b):
         lists = [[0 for x in range(self.cities)] for y in range(self.cities)]
         for city in range(self.cities):
-            for neighbour in range(self.cities):
-                if self.adj_matrix[city][neighbour] != inf and city != neighbour:
-                    lists[city].append(neighbour)
+            lists[city].append(a[(a.index(city) + 1) % self.cities])
+            lists[city].append(a[a.index(city) - 1])
+            lists[city].append(b[(b.index(city) + 1) % self.cities])
+            lists[city].append(b[b.index(city) - 1])
         return lists
 
     def remove_from_lists(self, element, lists):
@@ -71,15 +72,28 @@ class TSP:
                 result = lists[i]
         return result[0]
 
+    def get_common_value(self, lists):
+        result = None
+        iscommon = False
+        for i in range(self.cities):
+            for j in range(self.cities):
+                if lists[i].count(j) > 1:
+                    result = j
+                    iscommon = True
+        return iscommon, result
+
     def ex_crossover(self, a, b):
-        lists = self.create_neighbours_lists()
+        lists = self.create_neighbours_lists(a, b)
         chosen_parent = a if random() % 2 == 0 else b
         current = chosen_parent[0]
         child = []
         while len(child) != self.cities:
             child.append(current)
             lists = self.remove_from_lists(current, lists)
-            if len(lists[current]) == 1:
+            iscommon, value = self.get_common_value(lists)
+            if iscommon:
+                new = value
+            elif len(lists[current]) == 1:
                 new = self.random_node(lists, child)
             else:
                 new = self.fewest_neighbours(lists, current)
