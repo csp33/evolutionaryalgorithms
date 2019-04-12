@@ -359,3 +359,6 @@ dmypy.json
 .pyre/
 
 *.zip
+
+tesztmx13.csv
+
