@@ -44,12 +44,13 @@ print("Number of generations: {}".format(generations))
 print("Size of the initial population: {}".format(initial_population_size))
 print("Size of the final population: {}".format(len(population)))
 print("Mutation chance: {}".format(mutation_chance))
+print("Size of the graph: {}".format(len(adj_matrix)))
 best = population[0]
 if not WRITE_TO_FILE:
     print("Best individual:\n{}".format(instance.decode_individual(best)))
 else:
-    input = sys.argv[1]
-    filename = "results/result_{}.txt".format(input[input.index('/') + 1:input.index('.')])
+    filename = sys.argv[1]
+    filename = "results/result_{}.txt".format(filename[filename.index('/') + 1:filename.index('.')])
     write_to_file(filename, best,instance.get_fitness(best))
     print("Result written to file {}".format(filename))
 print("Fitness of the best individual: {}".format(instance.get_fitness(best)))

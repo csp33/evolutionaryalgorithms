@@ -5,7 +5,7 @@ class graph_coloring:
     def __init__(self, adj_matrix, generations,
                  initial_population_size, mutation_chance):
         self.vertices = len(adj_matrix)
-        assert(self.vertices != 0 and self.vertices!=None)
+        assert(self.vertices != 0 and self.vertices != None)
         self.generations = generations
         self.adj_matrix = adj_matrix
         self.initial_population_size = initial_population_size
@@ -52,8 +52,9 @@ class graph_coloring:
 
     def mutate(self, individual):
         a, b = self.get_random_pair(self.vertices)
-        #individual[a:b] = reversed(individual[a:b])  # Adjacency problem
-        individual[a], individual[b] = individual[b], individual[a] # Schedule problem
+        # individual[a:b] = reversed(individual[a:b])  # Adjacency problem
+        # Schedule problem
+        individual[a], individual[b] = individual[b], individual[a]
         return individual
 
     def mutation(self):
@@ -64,7 +65,28 @@ class graph_coloring:
                 self.population[position] = new_individual
 
     def crossover(self, a, b):
-        new_individual = []
+        new_individual = [0 for i in range(self.vertices)]
+        """
+        # Get the matching segment
+        ms_a, ms_b = self.get_random_pair(self.vertices)
+        # Copy the matching segment
+        new_individual[ms_a:ms_b] = a[ms_a:ms_b]
+        # Delete the elements of the MS from b
+        for allele in a[ms_a:ms_b]:
+            if allele in b:
+                b[b.index(allele)] = -1
+        # Copy the rest of the alleles
+        start = ms_b + 1
+        for i in range(self.vertices):
+            new_index=(start + i) % self.vertices
+            if new_index not in range(ms_a,ms_b):
+                for j in range(self.vertices):
+                    b_index = (new_index + j)%self.vertices
+                    if b[b_index] != -1:
+                        new_individual[new_index]=b[b_index]
+                        break
+
+        """
         breakpoint = randint(0, self.vertices - 1)
         new_individual[:breakpoint] = a[:breakpoint]
         new_individual[breakpoint:] = b[breakpoint:]
@@ -97,7 +119,7 @@ class graph_coloring:
     def get_population(self):
         return self.population
 
-    def decode_individual(self,individual):
+    def decode_individual(self, individual):
         result = []
         for i in individual:
             result.append(self.colorlist[i])

@@ -88,12 +88,19 @@
 		\begin{statement}
 		Design the representation and the fitting genetic operators for the following problem: in a school there are 16 classes. For each class it’s given that which teacher holds it, how many times a week. The lectures are from Monday to Friday in 8 possible times. Make a schedule, which tells, what lectures is attended by a given class in a given time. There can be no conflicts, that is one teacher holds ones lecture at a time, and one class can attend only one lecture at a time. Let us suppese we want to avoid holes in the schedule for the classes. How do we modify our algorithm?
 		\end{statement}
+		We should use permutation representation: a 5x8 matrix (days x times). The alleles values should be 16 pairs (class,lecture).\\
+		The constraints would be the followings:
+		\begin{itemize}
+			\item In a matrix cell two classes can not be the same.
+			\item In a matrix cell two lectures can not be the same.
+		\end{itemize}
 
 
 	\item
 		\begin{statement}
 		We have a G graph, it’s defined by it’s adjacency matrix. Find out, using genetic algorithm, that at least how many colors is needed to color it. You can find test graphs on the web page. You also have to send the permutation, that defines a correct coloring, for the biggest graph you could solve the problem. (Hint: 50 colors is enough for each).
 		\end{statement}
+		The biggest graph I could solve was \emph{tesztmx13}. My algorithm achieved a fitness of 14 colors.
 
 
 \end{enumerate}
