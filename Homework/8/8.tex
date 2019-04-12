@@ -1,0 +1,111 @@
+\documentclass[12pt,english]{article}
+\usepackage[english]{babel}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{multirow}
+\usepackage{pgfplots}
+\usepackage{subcaption}
+\usepackage{amssymb}
+\usepackage[hidelinks]{hyperref}
+\usepackage{caption}
+\usepackage{amsthm}
+\usepackage{multicol}
+\pgfplotsset{compat=1.16}
+\usepackage{minted}
+\usepackage{float}
+\usepackage{titling}
+\usepackage{soul}
+\usepackage{listings}
+\newenvironment{statement}{\fontfamily{ptm}\selectfont}{\par}
+\usepackage{array}
+\graphicspath{ {../img/}}
+\selectlanguage{english}
+\usepackage[nottoc]{tocbibind}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage[a4paper,left=2cm,right=2cm,top=2.5cm,bottom=2.5cm]{geometry}
+\RecustomVerbatimEnvironment{Verbatim}{BVerbatim}{}
+
+
+\title{Evolutionary Algorithms}
+\setlength{\droptitle}{10em}
+\author{Carlos Sánchez Páez}
+
+\makeindex
+\begin{document}
+
+
+\begin{titlepage}
+
+\newlength{\centeroffset}
+\setlength{\centeroffset}{-0.5\oddsidemargin}
+\addtolength{\centeroffset}{0.5\evensidemargin}
+\thispagestyle{empty}
+
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+
+\centering
+\includegraphics[width=0.75\textwidth]{bme_logo.jpg}\\[1.4cm]
+
+\textsc{ \Large Evolutionary Algorithms\\[4cm]}
+
+\textsc{\Huge Homework}\\[0.75cm]
+
+{\Large\bfseries Eighth task\\}
+\end{minipage}
+
+\vspace{8cm}
+\noindent\hspace*{\centeroffset}
+\begin{minipage}{\textwidth}
+\centering
+
+\textbf{Author}\\ {Carlos Sánchez Páez}\\
+\texttt{http://www.github.com/csp98}\\[0.5cm]
+\textsc{Budapest University of Technology and Economics}\\
+\vspace{1cm}
+\textsc{Academic year 2018-2019}
+\end{minipage}
+\end{titlepage}
+\thispagestyle{empty}
+
+\newpage
+
+
+\begin{enumerate}
+
+	\item
+		\begin{statement}
+		Design a genetic algorithm to solve the n-queens problem (you don’t have to find every layout, just one where not pairs hit eachother). What sort of crossover and mutation operators would you use? What is the best criterion for stopping? What is a suitable fitness function?
+		\end{statement}
+
+
+	\item
+		\begin{statement}
+		Find a new example (that is we haven’t mentioned in the class before) for a problem, that can be solve with genetic algorithm using permutation representation. What is the type of it? (CSPFOP COP, scheduling-adjacency)? What would be a suitable fitness function?
+		\end{statement}
+
+
+	\item
+		\begin{statement}
+		Write a program you designed in the first exercise, and examine the running time. What is the maximum size of the chessboard your function can find a good layout? Try different fitness functions (that is different penalties).
+		\end{statement}
+
+\end{enumerate}
+
+
+\begin{thebibliography}{9}
+
+\bibitem{Course Webpage}
+Course Webpage
+\\\texttt{http://math.bme.hu/~safaro/evolalgen.html}
+
+
+\bibitem{Webpage4}
+\texttt{https://tex.stackexchange.com/}
+
+
+\end{thebibliography}
+
+
+\end{document}
