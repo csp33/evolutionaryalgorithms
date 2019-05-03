@@ -19,7 +19,7 @@ function w=rechenberg(f,gen,popsize,std,c)
             if f(new(1),new(2))<f(pop(i,1),pop(i,2))
                 pop(i,1)=new(1);
                 pop(i,2)=new(2);
-                succesful = successful + 1;
+                successful = successful + 1;
             end
             % 1/5 rule
             if j==20
